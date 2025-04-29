@@ -1,33 +1,44 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Base Converter</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main>
     <h1>Base Converter</h1>
-    <p>Convert numbers between different bases (Binary, Decimal, Hex, Octal).</p>
+    <p class="description">Convert numbers between different bases (Binary, Decimal, Hex, Octal).</p>
 
     <section>
-      <h2>From:</h2>
-      <div class="base-buttons" id="from-base" role="radiogroup" aria-label="בחר בסיס מקור"></div>
+      <h2>From Base</h2>
+      <div class="button-group" id="from-base-buttons">
+        <button data-base="2">Binary (2)</button>
+        <button data-base="8">Octal (8)</button>
+        <button data-base="10" class="selected">Decimal (10)</button>
+        <button data-base="16">Hex (16)</button>
+      </div>
     </section>
-
-    <label for="number-input" class="visually-hidden">Enter a number</label>
-    <input type="text" id="number-input" placeholder="Enter a number" aria-label="Enter a number" />
 
     <section>
-      <h2>To:</h2>
-      <div class="base-buttons" id="to-base" role="radiogroup" aria-label="בחר בסיס יעד"></div>
+      <label for="numberInput">Enter a number</label>
+      <input type="text" id="numberInput" aria-label="Enter a number" />
     </section>
 
-    <button id="convert-button" aria-label="Convert">Convert</button>
+    <section>
+      <h2>To Base</h2>
+      <div class="button-group" id="to-base-buttons">
+        <button data-base="2" class="selected">Binary (2)</button>
+        <button data-base="8">Octal (8)</button>
+        <button data-base="10">Decimal (10)</button>
+        <button data-base="16">Hex (16)</button>
+      </div>
+    </section>
 
-    <p id="result" aria-live="polite"></p>
+    <button id="convertBtn">Convert</button>
+
+    <section id="resultSection" aria-live="polite"></section>
   </main>
 
   <script src="script.js"></script>
