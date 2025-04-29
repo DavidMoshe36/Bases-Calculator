@@ -1,70 +1,76 @@
-document.addEventListener('DOMContentLoaded', function() {
-    let fromBase = 10;
-    let toBase = 10;
-    let inputNumber = document.getElementById('inputNumber');
-    let resultDiv = document.getElementById('result');
-    let convertButton = document.getElementById('convertButton');
 
-    // Event listeners for the "FROM" buttons
-    const fromButtons = document.querySelectorAll('.from-btn');
-    fromButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            fromBase = parseInt(button.getAttribute('data-base'));
-            updateButtonStyles(fromButtons, button);
-        });
+const bases = [
+  { name: "Binary", value: 2 },
+  { name: "Octal", value: 8 },
+  { name: "Decimal", value: 10 },
+  { name: "Hexadecimal", value: 16 }
+];
+
+let fromBase = 10;
+let toBase = 2;
+
+function createBaseButtons(containerId, isFrom) {
+  const container = document.getElementById(containerId);
+  bases.forEach(base => {
+    const btn = document.createElement("button");
+    btn.textContent = `${base.name} (${base.value})`;
+    btn.setAttribute("data-base", base.value);
+    btn.setAttribute("role", "radio");
+    btn.setAttribute("aria-checked", "false");
+    btn.addEventListener("click", () => {
+      const siblings = container.querySelectorAll("button");
+      siblings.forEach(b => {
+        b.classList.remove("selected");
+        b.setAttribute("aria-checked", "false");
+      });
+      btn.classList.add("selected");
+      btn.setAttribute("aria-checked", "true");
+
+      if (isFrom) {
+        fromBase = base.value;
+      } else {
+        toBase = base.value;
+      }
     });
+    container.appendChild(btn);
+  });
 
-    // Event listeners for the "TO" buttons
-    const toButtons = document.querySelectorAll('.to-btn');
-    toButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            toBase = parseInt(button.getAttribute('data-base'));
-            updateButtonStyles(toButtons, button);
-        });
-    });
+  // סמן ברירת מחדל
+  container.querySelector(`button[data-base="${isFrom ? 10 : 2}"]`).click();
+}
 
-    // Convert button click handler
-    convertButton.addEventListener('click', function() {
-        let num = inputNumber.value.trim();
+createBaseButtons("from-base", true);
+createBaseButtons("to-base", false);
 
-        if (isValidInput(num, fromBase)) {
-            let decimalValue = convertToDecimal(num, fromBase);
-            let result = convertFromDecimal(decimalValue, toBase);
-            resultDiv.innerHTML = `Result: ${num}(${fromBase}) = ${result}(${toBase})`;
-            inputNumber.value = '';
-        } else {
-            alert('Invalid input for the selected base!');
-        }
-    });
+document.getElementById("convert-button").addEventListener("click", () => {
+  const input = document.getElementById("number-input");
+  const value = input.value.trim();
 
-    // Helper function to validate input for the selected base
-    function isValidInput(num, base) {
-        const validChars = {
-            2: /^[01]+$/,
-            8: /^[0-7]+$/,
-            10: /^[0-9]+$/,
-            16: /^[0-9a-fA-F]+$/
-        };
-        return validChars[base].test(num);
-    }
+  // בדיקת תקינות קלט
+  const validChars = {
+    2: /^[01]+$/,
+    8: /^[0-7]+$/,
+    10: /^\d+$/,
+    16: /^[0-9a-fA-F]+$/
+  };
 
-    // Helper function to convert a number to decimal (base 10)
-    function convertToDecimal(num, base) {
-        return parseInt(num, base);
-    }
+  if (!validChars[fromBase].test(value)) {
+    alert("Invalid input for base " + fromBase);
+    return;
+  }
 
-    // Helper function to convert a decimal number to another base
-    function convertFromDecimal(decimalValue, base) {
-        return decimalValue.toString(base).toUpperCase();
-    }
+  const decimal = parseInt(value, fromBase);
+  const converted = decimal.toString(toBase).toUpperCase();
 
-    // Helper function to update button styles based on selection
-    function updateButtonStyles(buttons, selectedButton) {
-        buttons.forEach(button => {
-            button.style.transform = 'scale(1)';
-            button.style.backgroundColor = '';
-        });
-        selectedButton.style.transform = 'scale(1.2)';
-        selectedButton.style.backgroundColor = '#ffde59';
-    }
+  const baseSymbols = {
+    2: "₂",
+    8: "₈",
+    10: "₁₀",
+    16: "₁₆"
+  };
+
+  document.getElementById("result").textContent =
+    `Result: ${value}${baseSymbols[fromBase]} = ${converted}${baseSymbols[toBase]}`;
+
+  input.value = "";
 });
