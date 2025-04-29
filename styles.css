@@ -1,88 +1,80 @@
-
 body {
   font-family: sans-serif;
   background-color: rgb(241, 239, 244);
+  color: #4a4a54;
   text-align: center;
   margin: 0;
   padding: 20px;
 }
 
 main {
-  max-width: 600px;
+  max-width: 500px;
   margin: auto;
-  padding: 20px;
-}
-
-h1 {
-  font-size: 2.5rem;
-  color: #4a4a54;
-}
-
-.description {
-  margin-bottom: 20px;
 }
 
 .button-group {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 10px 0;
-  flex-wrap: wrap;
 }
 
-button {
-  padding: 10px 15px;
+.base-btn {
+  background-color: #ffde59;
   border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  font-size: 16px;
+  transition: transform 0.2s, background-color 0.2s;
 }
 
-button[data-base="2"] { background-color: #ff5757; }
-button[data-base="8"] { background-color: #0cc0df; }
-button[data-base="10"] { background-color: #8c52ff; }
-button[data-base="16"] { background-color: #ffde59; color: #000; }
+.base-btn:hover {
+  transform: scale(1.05);
+}
 
-button.selected {
+.base-btn.selected {
   transform: scale(1.2);
-  outline: 3px solid #4a4a54;
+  background-color: #8c52ff;
+  color: white;
 }
 
-input[type="text"] {
+input {
   padding: 10px;
-  font-size: 1rem;
+  font-size: 16px;
+  margin-top: 10px;
   width: 80%;
   max-width: 300px;
-  margin: 10px auto;
-  display: block;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 #convertBtn {
   background-color: #4a4a54;
   color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
   margin-top: 15px;
+  cursor: pointer;
 }
 
-#resultSection {
+#result {
   margin-top: 20px;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 18px;
 }
 
+/* Responsive */
 @media (max-width: 600px) {
   .button-group {
     flex-direction: column;
+    align-items: center;
   }
 
-  button {
-    width: 100%;
-  }
-
-  input[type="text"] {
-    width: 100%;
+  .base-btn {
+    width: 70%;
   }
 }
