@@ -1,4 +1,4 @@
-// Defining the content in both languages
+// English and Hebrew content
 const content = {
   english: {
     title: "Base Converter",
@@ -18,7 +18,7 @@ const content = {
   }
 };
 
-// Function to update the language based on the selected option
+// Function to update the language
 function changeLanguage(language) {
   document.getElementById("title").innerText = content[language].title;
   document.getElementById("description").innerText = content[language].description;
@@ -28,7 +28,7 @@ function changeLanguage(language) {
   document.getElementById("convert-btn").innerText = content[language].convertButton;
 }
 
-// Event listeners for language buttons
+// Switch language on button click
 document.getElementById("english-btn").addEventListener("click", function() {
   changeLanguage("english");
 });
