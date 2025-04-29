@@ -1,44 +1,45 @@
-<!-- Name: [השם שלך], ID: [ת"ז שלך] -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Base Converter</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Base Converter</h1>
-  <p>Convert numbers between different bases (Binary, Decimal, Hex, Octal).</p>
+  <div class="container">
+    <h1>Base Converter</h1>
+    <p>Convert numbers between different bases (Binary, Decimal, Hex, Octal).</p>
 
-  <div class="section">
-    <h3>From Base</h3>
-    <div class="base-options" id="fromBase">
-      <button data-base="2">Binary (2)</button>
-      <button data-base="8">Octal (8)</button>
-      <button data-base="10">Decimal (10)</button>
-      <button data-base="16">Hex (16)</button>
+    <div class="section">
+      <label>From:</label>
+      <div class="base-buttons" id="from-base">
+        <button data-base="2">Binary (2)</button>
+        <button data-base="8">Octal (8)</button>
+        <button data-base="10">Decimal (10)</button>
+        <button data-base="16">Hex (16)</button>
+      </div>
     </div>
-  </div>
 
-  <div class="section">
-    <label for="inputNumber">Enter a number:</label>
-    <input type="text" id="inputNumber" />
-  </div>
-
-  <div class="section">
-    <h3>To Base</h3>
-    <div class="base-options" id="toBase">
-      <button data-base="2">Binary (2)</button>
-      <button data-base="8">Octal (8)</button>
-      <button data-base="10">Decimal (10)</button>
-      <button data-base="16">Hex (16)</button>
+    <div class="section">
+      <label for="input-number">Enter a number:</label>
+      <input type="text" id="input-number" />
     </div>
+
+    <div class="section">
+      <label>To:</label>
+      <div class="base-buttons" id="to-base">
+        <button data-base="2">Binary (2)</button>
+        <button data-base="8">Octal (8)</button>
+        <button data-base="10">Decimal (10)</button>
+        <button data-base="16">Hex (16)</button>
+      </div>
+    </div>
+
+    <button id="convert-btn">Convert</button>
+
+    <div id="result" class="result"></div>
   </div>
-
-  <button id="convertBtn">Convert</button>
-
-  <div class="section" id="result"></div>
 
   <script src="script.js"></script>
 </body>
