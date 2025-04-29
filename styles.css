@@ -1,59 +1,100 @@
+
 body {
-    font-family: sans-serif;
-    text-align: center;
-    background-color: rgb(241, 239, 244);
-    margin: 0;
-    padding: 0;
+  font-family: sans-serif;
+  background-color: rgb(241, 239, 244);
+  text-align: center;
+  margin: 0;
+  padding: 20px;
 }
 
-.container {
-    padding: 20px;
+main {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
 }
 
-button {
-    padding: 10px 20px;
-    margin: 5px;
-    background-color: #4a4a54;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+h1 {
+  color: #4a4a54;
 }
 
-button:hover {
-    background-color: #333;
+.base-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+  flex-wrap: wrap;
 }
 
-button:focus {
-    outline: 3px solid #ffde59;
+.base-buttons button {
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-size: 16px;
 }
 
-/* Media query למכשירים עם רוחב מסך קטן (טלפונים) */
-@media screen and (max-width: 600px) {
-    .base-options {
-        display: block;
-    }
-
-    .base-options button {
-        width: 100%;
-        margin: 10px 0;
-    }
-
-    button {
-        font-size: 16px;
-        width: 100%;
-        margin: 10px 0;
-    }
-
-    .container {
-        padding: 10px;
-    }
+.base-buttons button.selected {
+  transform: scale(1.2);
+  border-color: #4a4a54;
+  background-color: #dcdcdc;
 }
 
-/* Media query למכשירים עם רוחב מסך בינוני (כמו טאבלטים) */
-@media screen and (max-width: 900px) {
-    button {
-        width: 48%;
-        margin: 10px 1%;
-    }
+#convert-button {
+  background-color: #4a4a54;
+  color: white;
+  padding: 10px 30px;
+  font-size: 16px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#number-input {
+  padding: 10px;
+  width: 80%;
+  max-width: 300px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+/* צבעים מיוחדים */
+button[data-base="2"] {
+  background-color: #ff5757;
+}
+button[data-base="8"] {
+  background-color: #0cc0df;
+}
+button[data-base="10"] {
+  background-color: #8c52ff;
+}
+button[data-base="16"] {
+  background-color: #ffde59;
+}
+
+/* רספונסיביות */
+@media (max-width: 500px) {
+  #number-input {
+    width: 100%;
+  }
+
+  .base-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #convert-button {
+    width: 100%;
+  }
 }
