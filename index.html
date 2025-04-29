@@ -1,42 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base Converter</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Base Converter</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>Base Converter</h1>
-        <p>(Convert numbers between different bases (Binary, Decimal, Hex, Octal</p>
+  <main>
+    <h1>Base Converter</h1>
+    <p>Convert numbers between different bases (Binary, Decimal, Hex, Octal).</p>
 
-        <div class="base-options" role="group" aria-labelledby="from-label">
-            <h3 id="from-label">FROM:</h3>
-            <button class="from-btn" data-base="2" aria-label="Binary base">Binary</button>
-            <button class="from-btn" data-base="8" aria-label="Octal base">Octal</button>
-            <button class="from-btn" data-base="10" aria-label="Decimal base">Decimal</button>
-            <button class="from-btn" data-base="16" aria-label="Hexadecimal base">Hexadecimal</button>
-        </div>
+    <section>
+      <h2>From:</h2>
+      <div class="base-buttons" id="from-base" role="radiogroup" aria-label="בחר בסיס מקור"></div>
+    </section>
 
-        <div>
-            <label for="inputNumber">Enter a number</label>
-            <input type="text" id="inputNumber" aria-placeholder="Enter a number to convert">
-        </div>
+    <label for="number-input" class="visually-hidden">Enter a number</label>
+    <input type="text" id="number-input" placeholder="Enter a number" aria-label="Enter a number" />
 
-        <div class="base-options" role="group" aria-labelledby="to-label">
-            <h3 id="to-label">TO:</h3>
-            <button class="to-btn" data-base="2" aria-label="Convert to Binary base">Binary</button>
-            <button class="to-btn" data-base="8" aria-label="Convert to Octal base">Octal</button>
-            <button class="to-btn" data-base="10" aria-label="Convert to Decimal base">Decimal</button>
-            <button class="to-btn" data-base="16" aria-label="Convert to Hexadecimal base">Hexadecimal</button>
-        </div>
+    <section>
+      <h2>To:</h2>
+      <div class="base-buttons" id="to-base" role="radiogroup" aria-label="בחר בסיס יעד"></div>
+    </section>
 
-        <div id="result" role="alert" aria-live="polite"></div>
+    <button id="convert-button" aria-label="Convert">Convert</button>
 
-        <button id="convertButton" aria-label="Click to convert numbers">Convert</button>
-    </div>
+    <p id="result" aria-live="polite"></p>
+  </main>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
