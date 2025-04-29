@@ -12,6 +12,10 @@ main {
   margin: auto;
 }
 
+h1 {
+  color: #4a4a54;
+}
+
 .button-group {
   display: flex;
   justify-content: center;
@@ -23,7 +27,7 @@ main {
 .base-btn {
   background-color: #ffde59;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
